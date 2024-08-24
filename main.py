@@ -125,12 +125,10 @@ def run_bot():
 
 
 
-if __name__ == "__main__":
-    bot_thread = threading.Thread(target=run_bot)
-    bot_thread.start()  # Inicia el bot en un hilo aparte
 
-    # Ejecuta la aplicación FastAPI en el hilo principal
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+bot_thread = threading.Thread(target=run_bot)
+bot_thread.start()  # Inicia el bot en un hilo aparte
+
     
 
 
