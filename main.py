@@ -4,8 +4,8 @@ import json
 import datetime
 import pytz
 import time
-import threading
-import asyncio
+#import threading
+#import asyncio
 import TelegramBot as Tl
 from fastapi import FastAPI,HTTPException
 import uvicorn 
