@@ -1,13 +1,12 @@
 import datetime
 import pytz
-import locale
+
 
 from babel.dates import format_datetime
 
 
 # Zona horaria de Ecuador
 ecuador_tz = pytz.timezone('America/Guayaquil')
-locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
 
 #epoch para hora
