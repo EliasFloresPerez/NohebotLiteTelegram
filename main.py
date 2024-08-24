@@ -4,9 +4,9 @@ import json
 import datetime
 import pytz
 import time
-#import threading
-#import asyncio
-#import TelegramBot as Tl
+import threading
+import asyncio
+import TelegramBot as Tl
 from fastapi import FastAPI,HTTPException
 import uvicorn 
 from fastapi.middleware.cors import CORSMiddleware
@@ -113,21 +113,21 @@ async def Notificar_Cambios():
         #return {"message": "Error: " + str(e)}
         raise HTTPException(status_code=404, detail= "Error: " + str(e))
 
-"""
+
 def run_bot():
     global BotObject 
     print("Bot de Telegram iniciado")
     asyncio.set_event_loop(asyncio.new_event_loop())  # Crea un nuevo bucle de eventos
     BotObject = Tl.BotTelegram()
     BotObject.iniciar()
-"""
 
 
 
 
 
-#bot_thread = threading.Thread(target=run_bot)
-#bot_thread.start()  # Inicia el bot en un hilo aparte
+
+bot_thread = threading.Thread(target=run_bot)
+bot_thread.start()  # Inicia el bot en un hilo aparte
 
     
 
