@@ -126,8 +126,8 @@ def run_bot():
 
 
 
-bot_thread = threading.Thread(target=run_bot)
-bot_thread.start()  # Inicia el bot en un hilo aparte
+#bot_thread = threading.Thread(target=run_bot)
+#bot_thread.start()  # Inicia el bot en un hilo aparte
 
     
 
