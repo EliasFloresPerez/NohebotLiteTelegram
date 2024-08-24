@@ -8,7 +8,7 @@ import threading
 import asyncio
 import TelegramBot as Tl
 from fastapi import FastAPI,HTTPException
-import uvicorn
+import uvicorn 
 from fastapi.middleware.cors import CORSMiddleware
 
 
