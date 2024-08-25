@@ -11,6 +11,7 @@ from fastapi import FastAPI,HTTPException
 import uvicorn 
 from fastapi.middleware.cors import CORSMiddleware
 
+import bd as bd
 
 app = FastAPI() 
 bot_thread  = ""
@@ -34,11 +35,16 @@ async def Obtener_Tareas_Cambios():
     diccionario = gt.Obtener_tareas()
 
     try:
-        #Obtemos la tareas del Tarers.json
-        with open("tareas.json", "r", encoding="utf-8") as file:
-            tareas = json.load(file)
-    except:
+        #abrimos la base de datos y sacamos el json
+        bd_obj = bd.BaseDeDatosJson()
+        bd_obj.abrir_conexion()
+        tareas = bd_obj.obtener_tareas(1)
+        bd_obj.cerrar_conexion()
+
+        tareas = json.loads(tareas) #Convertimos el string a diccionario
+    except Exception as e:
         tareas = {}
+        print(e)
 
     
     #Comparamos las tareas
@@ -49,10 +55,15 @@ async def Obtener_Tareas_Cambios():
         await BotObject.send_message(BotObject.grupo_chat_id, cambios)
 
     #Guardamos las tareas en el archivo tareas.json
-    with open("tareas.json", "w", encoding="utf-8") as file:
-        json.dump(diccionario, file, indent=4)
+    try:
+        tareas = json.dumps(diccionario)
+        bd_obj = bd.BaseDeDatosJson()
+        bd_obj.abrir_conexion()
 
-    print(diccionario)
+        bd_obj.modificar_tareas(1, tareas)
+        bd_obj.cerrar_conexion()
+    except Exception as e:
+        print("Error al guardar las tareas en la base de datos: " + str(e))
 
     return diccionario,cambios
 

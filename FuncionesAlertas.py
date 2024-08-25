@@ -24,7 +24,7 @@ def TareasFinalizanHoy(diccionario):
     hoy = datetime.datetime.now(ecuador_tz).date()
 
     #Restar un dia
-    hoy = hoy - datetime.timedelta(days=1)
+    #hoy = hoy - datetime.timedelta(days=1)
     # Lo guardamos en un diccionario
     TareasHoy = {}
     MensajeFinal = "<b><i>🚨 ACTIVIDADES QUE FINALIZAN HOY 🔧</i></b>\n\n"

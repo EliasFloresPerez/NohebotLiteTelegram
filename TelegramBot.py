@@ -21,7 +21,7 @@ class BotTelegram:
         pass
 
     async def send_message(self, chat_id: int, text: str) -> None:
-        print(f"Enviando mensaje al chat {chat_id}: {text}")
+        print(f"Enviando mensaje al chat")
         # Envía un mensaje al chat (en este caso, el grupo)
         await self.updater.bot.send_message(chat_id=chat_id, text=text,parse_mode= ParseMode.HTML) 
 
